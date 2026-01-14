@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVOYA AMANDURE Richard | Portfolio académique</title>
+
+<style>
+:root{
+--primary:#0f172a;
+--secondary:#2563eb;
+--bg:#f1f5f9;
+--white:#ffffff;
+--accent:#facc15;
+--text:#1e293b;
+}
+body.dark{
+--primary:#020617;
+--secondary:#3b82f6;
+--bg:#020617;
+--white:#020617;
+--text:#e5e7eb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:"Segoe UI",Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.9;
+transition:.4s;
+padding-top:70px;
+scroll-behavior:smooth;
+}
+
+/* MENU FIXE */
+#navbar{
+position:fixed;
+top:0; left:0; width:100%;
+background:var(--primary);
+z-index:1000;
+padding:12px 20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+#navbar ul{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+list-style:none;
+}
+#navbar ul li a{
+color:white;
+text-decoration:none;
+font-weight:600;
+padding:6px 12px;
+border-radius:8px;
+transition:.3s;
+}
+#navbar ul li a.active,
+#navbar ul li a:hover{
+background:var(--secondary);
+}
+
+/* HEADER */
+header{
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:white;
+padding:90px 20px;
+text-align:center;
+position:relative;
+}
+header h1{font-size:2.8rem}
+header p{font-size:1.2rem;margin-top:10px}
+
+/* ACTIONS */
+.actions{
+position:absolute;
+top:20px;
+right:20px;
+display:flex;
+gap:10px;
+}
+.actions button,.actions a{
+background:rgba(255,255,255,.15);
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+backdrop-filter:blur(6px);
+text-decoration:none;
+}
+
+/* SECTIONS */
+section{max-width:1150px;margin:70px auto;padding:0 20px}
+.card{
+background:var(--white);
+padding:40px;
+border-radius:20px;
+box-shadow:0 20px 45px rgba(0,0,0,.1);
+margin-bottom:70px;
+}
+.card h2{
+color:var(--secondary);
+margin-bottom:25px;
+border-left:6px solid var(--accent);
+padding-left:16px;
+}
+
+/* TABLEAU */
+.search-box {
+margin-bottom: 20px;
+width: 100%;
+max-width: 400px;
+padding: 12px;
+border-radius: 10px;
+border: 2px solid var(--secondary);
+outline: none;
+background: var(--white);
+color: var(--text);
+}
+.table-container {
+overflow-x: auto;
+margin-top: 10px;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+min-width: 850px;
+background: var(--white);
+}
+table th, table td {
+border: 1px solid #cbd5f5;
+padding: 12px;
+text-align: left;
+font-size: 0.85rem;
+}
+table th {
+background-color: var(--secondary);
+color: white;
+}
+table tr:nth-child(even) {
+background-color: rgba(37, 99, 235, 0.05);
+}
+body.dark table td {
+color: #e5e7eb;
+border-color: #334155;
+}
+
+/* HERO */
+.hero{
+background:url("UNILU.jpg") center/cover no-repeat;
+height:350px;
+border-radius:22px;
+overflow:hidden;
+}
+.hero-overlay{
+background:rgba(15,23,42,.75);
+height:100%;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+/* BIO ET TIMELINE */
+.bio p{margin-bottom:22px;text-align:justify}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:4px;background:var(--secondary)}
+.event{margin-bottom:35px;padding-left:25px;opacity:0;transform:translateX(-30px);transition:.8s}
+.event.show{opacity:1;transform:translateX(0)}
+.event h3{color:var(--secondary)}
+.event:hover{color:var(--accent);cursor:pointer;transition:.3s}
+
+/* GALERIE */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.gallery figure{
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 18px 35px rgba(0,0,0,.15);
+transition:.4s ease;
+cursor:pointer;
+position: relative;
+}
+.gallery figure:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+}
+.gallery img{width:100%;height:300px;object-fit:cover; transition: 0.5s;}
+.gallery figcaption{text-align:center;padding:14px;font-weight:600;background:#f8fafc}
+
+/* LIGHTBOX */
+#lightbox {
+position: fixed;
+z-index: 10000;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0,0,0,0.9);
+backdrop-filter: blur(8px);
+display: none;
+justify-content:center; align-items:center;
+cursor: zoom-out;
+opacity: 0;
+transition: opacity 0.4s ease;
+}
+#lightbox.active{display:flex;opacity:1;}
+#lightbox img{
+max-width:90%; max-height:80%;
+border-radius:10px;
+box-shadow:0 0 30px rgba(255,255,255,0.2);
+transform: scale(0.7);
+transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+#lightbox.active img{transform:scale(1);}
+
+/* FORMULAIRE */
+form{display:grid;gap:18px}
+input,textarea{padding:14px;border-radius:12px;border:1px solid #cbd5f5;font-size:1rem}
+button.submit{background:var(--secondary);color:white;border:none;padding:14px;border-radius:14px;font-weight:bold;cursor:pointer}
+
+/* FOOTER */
+footer{background:var(--primary);color:white;text-align:center;padding:30px}
+
+/* ANIMATIONS */
+.hidden{opacity:0;transform:translateY(50px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+
+/* TIMELINE HORIZONTALE MA JOURNÉE */
+.timeline-horizontal{
+position: relative;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 40px 20px 60px 20px;
+overflow-x:auto;
+}
+.timeline-horizontal .line{
+position: absolute;
+top:50%;
+left:0;
+width:100%;
+height:6px;
+background:var(--secondary);
+z-index:0;
+border-radius:3px;
+}
+.timeline-horizontal .step{
+position: relative;
+flex:0 0 auto;
+z-index:1;
+text-align:center;
+opacity:0;
+transform:translateY(50px);
+transition: all 0.6s ease-out;
+cursor:pointer;
+}
+.timeline-horizontal .step.show{opacity:1; transform:translateY(0);}
+.timeline-horizontal .step .icon{
+font-size:2.5rem;
+width:60px; height:60px;
+line-height:60px;
+border-radius:50%;
+background-color:var(--color);
+color:white;
+margin:auto;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition: transform 0.3s;
+}
+.timeline-horizontal .step:hover .icon{transform:scale(1.3);}
+.timeline-horizontal .step .tooltip{
+position:absolute;
+top:70px;
+left:50%;
+transform:translateX(-50%);
+background:var(--color);
+color:white;
+padding:6px 12px;
+border-radius:12px;
+font-size:0.9rem;
+white-space:nowrap;
+opacity:0;
+pointer-events:none;
+transition:opacity 0.3s, top 0.3s;
+}
+.timeline-horizontal .step:hover .tooltip{
+opacity:1; top:80px;
+}
+@media(max-width:768px){
+.timeline-horizontal{
+flex-direction:column;
+align-items:flex-start;
+padding:20px 10px 40px 10px;
+}
+.timeline-horizontal .line{
+width:6px;
+height:100%;
+top:0;
+left:30px;
+}
+.timeline-horizontal .step{
+margin:20px 0 0 60px;
+}
+.timeline-horizontal .step .tooltip{top:0; left:-10px; transform:translateX(-100%);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU FIXE -->
+<nav id="navbar">
+<ul>
+<li><a href="#header" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
+<li><a href="#profil" class="nav-link" data-fr="Profil" data-en="Profile">Profil</a></li>
+<li><a href="#academique" class="nav-link" data-fr="Parcours" data-en="Timeline">Parcours</a></li>
+<li><a href="#gallery" class="nav-link" data-fr="Galerie" data-en="Gallery">Galerie</a></li>
+<li><a href="#Ma journée" class="nav-link" data-fr="Ma Journée" data-en="My Day">Ma Journée</a></li>
+<li><a href="#contact" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HEADER -->
+<header id="header">
+<div class="actions">
+<button id="langBtn">🇬🇧 EN</button>
+<button id="themeBtn">🌙</button>
+<a href="CV_UVOYA_AMANDURE_Richard.pdf" download>📄 CV</a>
+</div>
+<h1 data-fr="UVOYA AMANDURE Richard" data-en="UVOYA AMANDURE Richard"></h1>
+<p data-fr="Étudiant en année préparatoire B — École Supérieure des Ingénieurs (ESI)" data-en="Preparatory Year Engineering Student"></p>
+<p data-fr="Université de Lubumbashi (UNILU)" data-en="University of Lubumbashi (UNILU)"></p>
+</header>
+
+<!-- HERO -->
+<section class="hero hidden" id="profil">
+<div class="hero-overlay">
+<h2 data-fr="Profil académique" data-en="Academic Profile"></h2>
+<p data-fr="Année préparatoire à l’ESI, UNILU. Passionné par l’ingénierie et la technologie." data-en="Preparatory year at ESI, UNILU."></p>
+</div>
+</section>
+
+<!-- BIO -->
+<section class="card bio hidden">
+<h2 data-fr="Biographie" data-en="Biography"></h2>
+<p data-fr="Je me nomme UVOYA AMANDURE Richard, né à Mahagi le 28 mars 2006. Issu d'une famille de 11 enfants, j’ai suivi mes études à la maternelle Canossa de Sainte Madeleine puis le primaire et secondaire, avant d’intégrer l’Université de Lubumbashi, École Supérieure des Ingénieurs (ESI)."
+data-en="I am UVOYA AMANDURE Richard, born in Mahagi on March 28, 2006. From a family of 11 children, I studied at Canossa de Sainte Madeleine kindergarten, then primary and secondary school before joining the University of Lubumbashi, Higher School of Engineers (ESI)."></p>
+<p data-fr="Mon ambition est de devenir ingénieur compétent, capable de contribuer au développement scientifique et technologique de la RDC."
+data-en="My ambition is to become a skilled engineer, able to contribute to the scientific and technological development of the DRC."></p>
+</section>
+
+<!-- PARCOURS -->
+<section class="card hidden" id="academique">
+<h2 data-fr="Parcours académique" data-en="Academic Timeline"></h2>
+<div class="timeline">
+<div class="event"><h3>2011</h3><p>Maternelle</p></div>
+<div class="event"><h3>2018</h3><p>Fin primaire</p></div>
+<div class="event"><h3>2025</h3><p>Entrée à l’UNILU</p></div>
+</div>
+</section>
+
+<section class="card hidden" id="gallery">
+    <h2 data-fr="Parcours en images" data-en="Gallery"></h2>
+
+    <div class="gallery">
+        <figure>
+            <img src="0-5.jpg" class="gallery-img" alt="Enfance">
+            <figcaption>Enfance</figcaption>
+        </figure>
+
+        <figure>
+            <img src="2.jpg" class="gallery-img" alt="Pré-adolescence">
+            <figcaption>Pré-adolescence</figcaption>
+        </figure>
+
+        <figure>
+            <img src="3.jpeg" class="gallery-img" alt="Adolescence">
+            <figcaption>Adolescence</figcaption>
+        </figure>
+
+        <figure>
+            <img src="4.jpeg" class="gallery-img" alt="Jeunesse">
+            <figcaption>Jeunesse</figcaption>
+        </figure>
+
+        <figure>
+            <img src="555.jpeg" class="gallery-img" alt="Aujourd’hui">
+            <figcaption>Aujourd’hui</figcaption>
+        </figure>
+    </div>
+</section>
+
+</section>
+<!-- Ma journee -->
+<section id="Ma Journée">
+  <h2 data-fr="Ma Journée"a  data-en="Ma Journée"></h2>
+<div class="timeline-horizontal">
+<div class="line"></div>
+<div class="step"><div class="icon">☀️</div><p>06h – Réveil</p></div>
+<div class="step"><div class="icon">🍽️</div><p>7h - Déjeuner</p></div>
+<div class="step"><div class="icon">📚</div><p>08h - Cours</p></div>
+<div class="step"><div class="icon">🍽️</div><p>12h - Diné</p></div>
+<div class="step"><div class="icon">📚</div><p>14h - Cours</p></div>
+<div class="step"><div class="icon">🏋️</div><p>18h - Sport</p></div>
+<div class="step"><div class="icon">🛠️</div><p>20h - Révision</p></div>
+<div class="step"><div class="icon">🍽️</div><p>20h30' - Souper</p></div>
+<div class="step"><div class="icon">🌙</div><p>21h - Repos</p></div>
+</div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section class="card hidden">
+<h2 data-fr="Compétences" data-en="Skills"></h2>
+<ul>
+<li>HTML / CSS / JavaScript</li>
+<li>Python (débutant)</li>
+<li>Mathématiques appliquées</li>
+<li>Physique générale</li>
+</ul>
+</section>
+
+<!-- PROJETS -->
+<section class="card hidden">
+<h2 data-fr="Projets" data-en="Projects"></h2>
+<ul>
+<li>Site académique personnel – HTML / CSS / JS</li>
+<li>Exercices Python pour apprentissage</li>
+<li>Participation à projets scolaires</li>
+</ul>
+</section>
+
+<!-- CONTACT NETWORK -->
+<section class="card hidden">
+<h2 data-fr="Liste de Connaissances" data-en="Contact Network"></h2>
+<input type="text" id="searchInput" class="search-box" placeholder="Rechercher un nom ou une adresse..." onkeyup="filterTable()">
+<div class="table-container">
+<table id="knowledgeTable">
+<thead>
+<tr>
+<th>N°</th>
+<th>NOM & POST NOM & PRENOM</th>
+<th>ADRESSE</th>
+<th>NUMÉRO TÉLÉPHONE</th>
+<th>ADRESSE E-MAIL</th>
+<th>NOM DU PERE</th>
+</tr>
+</thead>
+<tbody>
+  <!-- 16 lignes -->
+<tr><td>1</td><td>UVOYA AMANDURE RICHARD</td><td>LUBUMBASHI</td><td>0828985390</td><td>richard12ricardo21@gmail.com</td><td>Uvoya</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
+<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<!-- Remplir avec tes contacts -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- FORMULAIRE CONTACT -->
+<section class="card hidden" id="contact">
+<h2 data-fr="Contact" data-en="Contact"></h2>
+<form id="contactForm">
+<input placeholder="Nom / Name" required>
+<input type="email" placeholder="Email" required>
+<textarea placeholder="Message"></textarea>
+<button class="submit">Envoyer / Send</button>
+<p id="msg"></p>
+</form>
+</section>
+
+<footer>©️ 2026 — UVOYA AMANDURE Richard | UNILU – ESI</footer>
+<div id="lightbox"><img src="" alt="Vue agrandie"></div>
+
+<script>
+/* LIGHTBOX */
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=lightbox.querySelector('img');
+document.querySelectorAll('.gallery-img').forEach(img=>{
+img.addEventListener('click',()=>{
+lightbox.classList.add('active');
+lightbox.style.display='flex';
+lightboxImg.src=img.src;
+document.body.style.overflow='hidden';
+});
+});
+lightbox.addEventListener('click',()=>{
+lightbox.classList.remove('active');
+setTimeout(()=>{lightbox.style.display='none';document.body.style.overflow='auto';},400);
+});
+
+/* FILTRE TABLEAU */
+function filterTable(){
+let input=document.getElementById("searchInput").value.toLowerCase();
+let tr=document.getElementById("knowledgeTable").getElementsByTagName("tr");
+for(let i=1;i<tr.length;i++){
+tr[i].style.display=tr[i].textContent.toLowerCase().includes(input)?"":"none";
+}
+}
+
+/* LANGUE ET THEME */
+const langBtn=document.getElementById("langBtn");
+const themeBtn=document.getElementById("themeBtn");
+let currentLang="fr";
+function updateLanguage(){
+document.querySelectorAll("[data-fr]").forEach(el=>el.textContent=currentLang=="fr"?el.dataset.fr:el.dataset.en);
+langBtn.textContent=currentLang=="fr"?"🇬🇧 EN":"🇫🇷 FR";
+}
+langBtn.addEventListener("click",()=>{currentLang=currentLang=="fr"?"en":"fr";updateLanguage();});
+themeBtn.addEventListener("click",()=>{document.body.classList.toggle("dark");themeBtn.textContent=document.body.classList.contains("dark")?"☀️":"🌙";});
+
+/* ANIMATIONS AU DEFILEMENT */
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show");});},{threshold:0.1});
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
+const timelineObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show");});},{threshold:0.3});
+document.querySelectorAll(".event").forEach(e=>timelineObserver.observe(e));
+document.querySelectorAll('.timeline-horizontal .step').forEach((step,i)=>{setTimeout(()=>{step.classList.add('show');},i*200);});
+
+/* FORMULAIRE */
+const form=document.getElementById("contactForm");
+const msg=document.getElementById("msg");
+form.addEventListener("submit",e=>{
+e.preventDefault();
+msg.textContent=currentLang=="fr"?"Message envoyé !":"Message sent!";
+msg.style.color="green";
+form.reset();
+});
+
+/* MENU ACTIF AU SCROLL */
+const sections=document.querySelectorAll("header, .hero, .card");
+const navLinks=document.querySelectorAll(".nav-link");
+window.addEventListener("scroll",()=>{
+let current="";
+sections.forEach(section=>{
+const sectionTop=section.offsetTop-80;
+if(scrollY>=sectionTop)current=section.id;
+});
+navLinks.forEach(link=>{link.classList.remove("active"); if(link.getAttribute("href").includes(current))link.classList.add("active");});
+});
+
+updateLanguage();
+</script>
+
+</body>
+</html>
