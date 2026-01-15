@@ -317,7 +317,10 @@ margin:20px 0 0 60px;
 <li><a href="#profil" class="nav-link" data-fr="Profil" data-en="Profile">Profil</a></li>
 <li><a href="#academique" class="nav-link" data-fr="Parcours" data-en="Timeline">Parcours</a></li>
 <li><a href="#gallery" class="nav-link" data-fr="Galerie" data-en="Gallery">Galerie</a></li>
-<li><a href="#Ma journée" class="nav-link" data-fr="Ma Journée" data-en="My Day">Ma Journée</a></li>
+<li><a href="#journee" class="nav-link" data-fr="Ma Journée" data-en="My Day">Ma Journée</a></li>
+<li><a href="#projets" class="nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
+<li><a href="#competences" class="nav-link" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+<li><a href="#connaissances" class="nav-link" data-fr="Connaissances" data-en="Contacts">Connaissances</a></li>
 <li><a href="#contact" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
 </ul>
 </nav>
@@ -392,10 +395,9 @@ data-en="My ambition is to become a skilled engineer, able to contribute to the 
     </div>
 </section>
 
-</section>
 <!-- Ma journee -->
-<section id="Ma Journée">
-  <h2 data-fr="Ma Journée"a  data-en="Ma Journée"></h2>
+<section id="journee" class="card hidden">
+  <h2 data-fr="Ma Journée" data-en="Ma Journée"></h2>
 <div class="timeline-horizontal">
 <div class="line"></div>
 <div class="step"><div class="icon">☀️</div><p>06h – Réveil</p></div>
@@ -410,8 +412,18 @@ data-en="My ambition is to become a skilled engineer, able to contribute to the 
 </div>
 </section>
 
+<!-- PROJETS -->
+<section class="card hidden" id="projets">
+<h2 data-fr="Projets" data-en="Projects"></h2>
+<ul>
+<li>Site académique personnel – HTML / CSS / JS</li>
+<li>Exercices Python pour apprentissage</li>
+<li>Participation à projets scolaires</li>
+</ul>
+</section>
+
 <!-- COMPÉTENCES -->
-<section class="card hidden">
+<section class="card hidden" id="competences">
 <h2 data-fr="Compétences" data-en="Skills"></h2>
 <ul>
 <li>HTML / CSS / JavaScript</li>
@@ -421,18 +433,8 @@ data-en="My ambition is to become a skilled engineer, able to contribute to the 
 </ul>
 </section>
 
-<!-- PROJETS -->
-<section class="card hidden">
-<h2 data-fr="Projets" data-en="Projects"></h2>
-<ul>
-<li>Site académique personnel – HTML / CSS / JS</li>
-<li>Exercices Python pour apprentissage</li>
-<li>Participation à projets scolaires</li>
-</ul>
-</section>
-
 <!-- CONTACT NETWORK -->
-<section class="card hidden">
+<section class="card hidden" id="connaissances">
 <h2 data-fr="Liste de Connaissances" data-en="Contact Network"></h2>
 <input type="text" id="searchInput" class="search-box" placeholder="Rechercher un nom ou une adresse..." onkeyup="filterTable()">
 <div class="table-container">
@@ -450,21 +452,21 @@ data-en="My ambition is to become a skilled engineer, able to contribute to the 
 <tbody>
   <!-- 16 lignes -->
 <tr><td>1</td><td>UVOYA AMANDURE RICHARD</td><td>LUBUMBASHI</td><td>0828985390</td><td>richard12ricardo21@gmail.com</td><td>Uvoya</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
-<tr><td>1</td><td>Jean</td><td>Lushi</td><td>0999</td><td>a@a.com</td><td>Mbala</td></tr>
-<tr><td>2</td><td>Marie</td><td>Likasi</td><td>0888</td><td>b@b.com</td><td>Kabuya</td></tr>
+<tr><td>2</td><td>CHERIBE ENZAMA Benoit</td><td>LUBUMBASHI</td><td>+243 814 796 115</td><td>benoîtenzama290@g.mail.com</td><td>ENZAMA</td></tr>
+<tr><td>3</td><td>MERVEILLE ENVIKIA Béatrice</td><td>LUBUMBASHI</td><td>+243 817 062 721</td><td>merveillebeatriceM29@gmail.com</td><td>ADRIKO</td></tr>
+<tr><td>4</td><td>TATI SERGE Samuel</td><td>LUBUMBASHI</td><td>+243 826 677 982</td><td>samuelserge172@gmail.com</td><td>IDRUNGI</td></tr>
+<tr><td>5</td><td>KAZADI THSIBASU Schilo</td><td>LUBUMBASHI</td><td>+243 820 598 932</td><td>kazadischilokts2@gmail.com</td><td>KAZADI JOSUE</td></tr>
+<tr><td>6</td><td>MBONDE MOGEMA JUNIOR</td><td>LUBUMBASHI</td><td>+243 830 036 108</td><td>sofonielebon292@gmail.com</td><td>MOGEMA</td></tr>
+<tr><td>7</td><td>MAMBI MUNGAMBA Exaucé</td><td>LUBUMBASHI</td><td>+243 823 977 843</td><td>exaucemambi600@gmail.com</td><td>MAMBI</td></tr>
+<tr><td>8</td><td>ATAYI LEMERY Laurène</td><td>LUBUMBASHI</td><td>+256 768 719286</td><td>laurenelemeryLp5@gmail.com</td><td>LEMERY</td></tr>
+<tr><td>9</td><td>IMERGO ANGUZU Augustin</td><td>LUBUMBASHI</td><td>+243 810 124 720</td><td>imergoanguzu572@gmail.com</td><td>ANGUZU</td></tr>
+<tr><td>10</td><td>DRILEBA HERITIER Deo</td><td>LUBUMBASHI</td><td>+243 814 429 699</td><td>drilebaheritier230@gmail.com</td><td>ANTOINE</td></tr>
+<tr><td>11</td><td>KAMPINGA KAZADI Eunice</td><td>LUBUMBASHI</td><td>+243 826 824 970</td><td>eunisekapingaE20@gmail.com</td><td>KAZADI</td></tr>
+<tr><td>12</td><td>EDENI DOUNE Merveille</td><td>LUBUMBASHI</td><td>+243 838 817 943</td><td>Edenimerveille366@gmail.com</td><td>DUANE</td></tr>
+<tr><td>13</td><td>PALUKU AARUNI AARON</td><td>LUBUMBASHI</td><td>+243 813 183 073</td><td>palukuaaron142@gmail.com</td><td>PALUKU</td></tr>
+<tr><td>14</td><td>BHAAKO MAKILA Jérémy</td><td>LUBUMBASHI</td><td>+243 822 738 723</td><td>jeremydegucci299@gmail.com</td><td>MAKILA</td></tr>
+<tr><td>15</td><td>AKURWOTH ENGIZE Benjamin</td><td>LUBUMBASHI</td><td>+243 833 232 967</td><td>Benjaminengize730@gmail.com</td><td>ENGIZE</td></tr>
+<tr><td>16</td><td>ADRIKO ANGUEZU Richard</td><td>LUBUMBASHI</td><td>+243 826 560 463</td><td>Richardanguezu045@gmail.com</td><td>GILBERT</td></tr>
 <!-- Remplir avec tes contacts -->
 </tbody>
 </table>
