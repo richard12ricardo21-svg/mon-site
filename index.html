@@ -48,6 +48,9 @@ background:var(--primary);
 z-index:1000;
 padding:12px 20px;
 box-shadow:0 5px 15px rgba(0,0,0,0.2);
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 #navbar ul{
 display:flex;
@@ -69,13 +72,77 @@ transition:.3s;
 background:var(--secondary);
 }
 
-@media(max-width:768px){
-#navbar ul{
-gap:8px;
+.hamburger{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:1.5rem;
+cursor:pointer;
+padding:5px;
+transition:transform 0.3s ease;
 }
+
+.hamburger.active{
+transform:rotate(90deg);
+}
+
+@media(max-width:768px){
+#navbar{
+flex-wrap:wrap;
+padding:10px 15px;
+}
+#navbar ul{
+display:none;
+flex-direction:column;
+gap:0;
+width:100%;
+background:var(--primary);
+margin-top:10px;
+padding:10px 0;
+border-top:1px solid rgba(255,255,255,0.1);
+max-height:0;
+overflow:hidden;
+transition:max-height 0.3s ease;
+}
+#navbar ul.active{
+display:flex;
+max-height:500px;
+}
+#navbar ul li{
+width:100%;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,0.1);
+opacity:0;
+animation:slideIn 0.3s ease forwards;
+}
+#navbar ul li:nth-child(1){animation-delay:0.05s}
+#navbar ul li:nth-child(2){animation-delay:0.1s}
+#navbar ul li:nth-child(3){animation-delay:0.15s}
+#navbar ul li:nth-child(4){animation-delay:0.2s}
+#navbar ul li:nth-child(5){animation-delay:0.25s}
+#navbar ul li:nth-child(6){animation-delay:0.3s}
+#navbar ul li:nth-child(7){animation-delay:0.35s}
+#navbar ul li:nth-child(8){animation-delay:0.4s}
+#navbar ul li:nth-child(9){animation-delay:0.45s}
 #navbar ul li a{
-padding:5px 8px;
-font-size:0.85rem;
+display:block;
+padding:12px;
+border-radius:0;
+}
+.hamburger{
+display:block;
+}
+}
+
+@keyframes slideIn{
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
 }
 }
 
@@ -389,7 +456,8 @@ margin:20px 0 0 60px;
 
 <!-- MENU FIXE -->
 <nav id="navbar">
-<ul>
+<button class="hamburger" id="hamburgerBtn">☰</button>
+<ul id="navMenu">
 <li><a href="#header" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
 <li><a href="#profil" class="nav-link" data-fr="Profil" data-en="Profile">Profil</a></li>
 <li><a href="#academique" class="nav-link" data-fr="Parcours" data-en="Timeline">Parcours</a></li>
@@ -629,6 +697,22 @@ const sectionTop=section.offsetTop-80;
 if(scrollY>=sectionTop)current=section.id;
 });
 navLinks.forEach(link=>{link.classList.remove("active"); if(link.getAttribute("href").includes(current))link.classList.add("active");});
+});
+
+/* MENU HAMBURGER */
+const hamburgerBtn=document.getElementById("hamburgerBtn");
+const navMenu=document.getElementById("navMenu");
+hamburgerBtn.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+hamburgerBtn.classList.toggle("active");
+hamburgerBtn.textContent = hamburgerBtn.classList.contains("active") ? "✕" : "☰";
+});
+navMenu.querySelectorAll("a").forEach(link=>{
+link.addEventListener("click",()=>{
+navMenu.classList.remove("active");
+hamburgerBtn.classList.remove("active");
+hamburgerBtn.textContent = "☰";
+});
 });
 
 updateLanguage();
