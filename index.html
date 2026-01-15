@@ -1,737 +1,1089 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UVOYA AMANDURE Richard | Portfolio académique</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UVOYA AMANDURE Richard | Portfolio académique</title>
 
-<style>
-:root{
---primary:#0f172a;
---secondary:#2563eb;
---bg:#f1f5f9;
---white:#ffffff;
---accent:#facc15;
---text:#1e293b;
-}
-body.dark{
---primary:#020617;
---secondary:#3b82f6;
---bg:#020617;
---white:#020617;
---text:#e5e7eb;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:"Segoe UI",Arial,sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.9;
-transition:.4s;
-padding-top:70px;
-scroll-behavior:smooth;
-font-size:16px;
-}
+  <style>
+    /* ========== VARIABLES GLOBALES ========== */
+    :root {
+      --primary: #0f172a;
+      --secondary: #2563eb;
+      --bg: #f1f5f9;
+      --white: #ffffff;
+      --accent: #facc15;
+      --text: #1e293b;
+      --border: #cbd5f5;
+      --light-bg: #f8fafc;
+    }
 
-@media(max-width:768px){
-body{
-font-size:14px;
-padding-top:65px;
-}
-}
+    body.dark {
+      --primary: #020617;
+      --secondary: #3b82f6;
+      --bg: #020617;
+      --white: #020617;
+      --text: #e5e7eb;
+      --border: #334155;
+    }
 
-/* MENU FIXE */
-#navbar{
-position:fixed;
-top:0; left:0; width:100%;
-background:var(--primary);
-z-index:1000;
-padding:12px 20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-#navbar ul{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
-list-style:none;
-}
-#navbar ul li a{
-color:white;
-text-decoration:none;
-font-weight:600;
-padding:6px 12px;
-border-radius:8px;
-transition:.3s;
-}
-#navbar ul li a.active,
-#navbar ul li a:hover{
-background:var(--secondary);
-}
+    /* ========== RESET & BASE ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.hamburger{
-display:none;
-background:none;
-border:none;
-color:white;
-font-size:1.5rem;
-cursor:pointer;
-padding:5px;
-transition:transform 0.3s ease;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.hamburger.active{
-transform:rotate(90deg);
-}
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      transition: background-color 0.4s, color 0.4s;
+      padding-top: 70px;
+      font-size: 16px;
+    }
 
-@media(max-width:768px){
-#navbar{
-flex-wrap:wrap;
-padding:10px 15px;
-}
-#navbar ul{
-display:none;
-flex-direction:column;
-gap:0;
-width:100%;
-background:var(--primary);
-margin-top:10px;
-padding:10px 0;
-border-top:1px solid rgba(255,255,255,0.1);
-max-height:0;
-overflow:hidden;
-transition:max-height 0.3s ease;
-}
-#navbar ul.active{
-display:flex;
-max-height:500px;
-}
-#navbar ul li{
-width:100%;
-text-align:center;
-border-bottom:1px solid rgba(255,255,255,0.1);
-opacity:0;
-animation:slideIn 0.3s ease forwards;
-}
-#navbar ul li:nth-child(1){animation-delay:0.05s}
-#navbar ul li:nth-child(2){animation-delay:0.1s}
-#navbar ul li:nth-child(3){animation-delay:0.15s}
-#navbar ul li:nth-child(4){animation-delay:0.2s}
-#navbar ul li:nth-child(5){animation-delay:0.25s}
-#navbar ul li:nth-child(6){animation-delay:0.3s}
-#navbar ul li:nth-child(7){animation-delay:0.35s}
-#navbar ul li:nth-child(8){animation-delay:0.4s}
-#navbar ul li:nth-child(9){animation-delay:0.45s}
-#navbar ul li a{
-display:block;
-padding:12px;
-border-radius:0;
-}
-.hamburger{
-display:block;
-}
-}
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        padding-top: 65px;
+      }
+    }
 
-@keyframes slideIn{
-from{
-opacity:0;
-transform:translateY(-10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+    /* ========== NAVBAR / MENU FIXE ========== */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--primary);
+      z-index: 1000;
+      padding: 12px 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* HEADER */
-header{
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:white;
-padding:90px 20px;
-text-align:center;
-position:relative;
-}
-header h1{font-size:2.8rem}
-header p{font-size:1.2rem;margin-top:10px}
+    #navbar ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+    }
 
-@media(max-width:768px){
-header{
-padding:60px 15px;
-}
-header h1{font-size:1.8rem}
-header p{font-size:0.95rem}
-}
+    #navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
 
-/* ACTIONS */
-.actions{
-position:absolute;
-top:20px;
-right:20px;
-display:flex;
-gap:10px;
-}
-.actions button,.actions a{
-background:rgba(255,255,255,.15);
-color:white;
-border:none;
-padding:10px 14px;
-border-radius:12px;
-cursor:pointer;
-font-weight:600;
-backdrop-filter:blur(6px);
-text-decoration:none;
-}
+    #navbar ul li a:hover,
+    #navbar ul li a.active {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
 
-@media(max-width:768px){
-.actions{
-top:10px;
-right:10px;
-gap:5px;
-}
-.actions button,.actions a{
-padding:8px 10px;
-font-size:0.8rem;
-}
-}
+    /* ========== HAMBURGER MENU ========== */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      transition: transform 0.3s ease;
+    }
 
-/* SECTIONS */
-section{max-width:1150px;margin:70px auto;padding:0 20px}
-.card{
-background:var(--white);
-padding:40px;
-border-radius:20px;
-box-shadow:0 20px 45px rgba(0,0,0,.1);
-margin-bottom:70px;
-}
-.card h2{
-color:var(--secondary);
-margin-bottom:25px;
-border-left:6px solid var(--accent);
-padding-left:16px;
-}
+    .hamburger:focus {
+      outline: 2px solid var(--secondary);
+      outline-offset: 2px;
+    }
 
-@media(max-width:768px){
-section{margin:40px auto;padding:0 15px}
-.card{padding:20px;margin-bottom:40px}
-.card h2{font-size:1.4rem;margin-bottom:15px}
-}
+    .hamburger.active {
+      transform: rotate(90deg);
+    }
 
-/* TABLEAU */
-.search-box {
-margin-bottom: 20px;
-width: 100%;
-max-width: 400px;
-padding: 12px;
-border-radius: 10px;
-border: 2px solid var(--secondary);
-outline: none;
-background: var(--white);
-color: var(--text);
-}
-.table-container {
-overflow-x: auto;
-margin-top: 10px;
--webkit-overflow-scrolling: touch;
-}
-table {
-width: 100%;
-border-collapse: collapse;
-min-width: 850px;
-background: var(--white);
-}
-table th, table td {
-border: 1px solid #cbd5f5;
-padding: 12px;
-text-align: left;
-font-size: 0.85rem;
-}
-table th {
-background-color: var(--secondary);
-color: white;
-}
-table tr:nth-child(even) {
-background-color: rgba(37, 99, 235, 0.05);
-}
-body.dark table td {
-color: #e5e7eb;
-border-color: #334155;
-}
+    @media (max-width: 768px) {
+      #navbar {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+      }
 
-@media(max-width:768px){
-.search-box{
-max-width:100%;
-padding:10px;
-font-size:0.9rem;
-}
-table th, table td{
-padding:8px;
-font-size:0.75rem;
-}
-table{
-min-width:100%;
-}
-}
+      .hamburger {
+        display: block;
+      }
 
-/* HERO */
-.hero{
-background:url("UNILU.jpg") center/cover no-repeat;
-height:350px;
-border-radius:22px;
-overflow:hidden;
-}
-.hero-overlay{
-background:rgba(15,23,42,.75);
-height:100%;
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
+      #navbar ul {
+        display: none !important;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        background: var(--primary);
+        margin-top: 10px;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+      }
 
-@media(max-width:768px){
-.hero{height:250px}
-.hero-overlay h2{font-size:1.4rem}
-.hero-overlay p{font-size:0.9rem}
-}
+      #navbar ul.active {
+        display: flex !important;
+        max-height: 500px;
+        opacity: 1;
+        visibility: visible;
+      }
 
-/* BIO ET TIMELINE */
-.bio p{margin-bottom:22px;text-align:justify}
-.timeline{position:relative;padding-left:30px}
-.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:4px;background:var(--secondary)}
-.event{margin-bottom:35px;padding-left:25px;opacity:0;transform:translateX(-30px);transition:.8s}
-.event.show{opacity:1;transform:translateX(0)}
-.event h3{color:var(--secondary)}
-.event:hover{color:var(--accent);cursor:pointer;transition:.3s}
+      #navbar ul li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        animation: slideIn 0.3s ease forwards;
+      }
 
-/* GALERIE */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
-.gallery figure{
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 18px 35px rgba(0,0,0,.15);
-transition:.4s ease;
-cursor:pointer;
-position: relative;
-}
-.gallery figure:hover {
-    transform: scale(1.05);
-    box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
-}
-.gallery img{width:100%;height:300px;object-fit:cover; transition: 0.5s;}
-.gallery figcaption{text-align:center;padding:14px;font-weight:600;background:#f8fafc}
+      #navbar ul li:nth-child(1) { animation-delay: 0.05s; }
+      #navbar ul li:nth-child(2) { animation-delay: 0.1s; }
+      #navbar ul li:nth-child(3) { animation-delay: 0.15s; }
+      #navbar ul li:nth-child(4) { animation-delay: 0.2s; }
+      #navbar ul li:nth-child(5) { animation-delay: 0.25s; }
+      #navbar ul li:nth-child(6) { animation-delay: 0.3s; }
+      #navbar ul li:nth-child(7) { animation-delay: 0.35s; }
+      #navbar ul li:nth-child(8) { animation-delay: 0.4s; }
+      #navbar ul li:nth-child(9) { animation-delay: 0.45s; }
 
-@media(max-width:768px){
-.gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
-.gallery img{height:200px}
-.gallery figcaption{padding:10px;font-size:0.9rem}
-}
+      #navbar ul li a {
+        display: block;
+        padding: 12px;
+        border-radius: 0;
+      }
+    }
 
-/* LIGHTBOX */
-#lightbox {
-position: fixed;
-z-index: 10000;
-top: 0; left: 0;
-width: 100%; height: 100%;
-background: rgba(0,0,0,0.9);
-backdrop-filter: blur(8px);
-display: none;
-justify-content:center; align-items:center;
-cursor: zoom-out;
-opacity: 0;
-transition: opacity 0.4s ease;
-}
-#lightbox.active{display:flex;opacity:1;}
-#lightbox img{
-max-width:90%; max-height:80%;
-border-radius:10px;
-box-shadow:0 0 30px rgba(255,255,255,0.2);
-transform: scale(0.7);
-transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-}
-#lightbox.active img{transform:scale(1);}
+    /* ========== ANIMATIONS ========== */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-/* FORMULAIRE */
-form{display:grid;gap:18px}
-input,textarea{padding:14px;border-radius:12px;border:1px solid #cbd5f5;font-size:1rem}
-button.submit{background:var(--secondary);color:white;border:none;padding:14px;border-radius:14px;font-weight:bold;cursor:pointer}
+    .hidden {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s, transform 1s;
+    }
 
-@media(max-width:768px){
-input,textarea{padding:12px;font-size:1rem;}
-button.submit{padding:12px}
-}
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* FOOTER */
-footer{background:var(--primary);color:white;text-align:center;padding:30px}
+    /* ========== HEADER ========== */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 90px 20px;
+      text-align: center;
+      position: relative;
+    }
 
-/* ANIMATIONS */
-.hidden{opacity:0;transform:translateY(50px);transition:1s}
-.show{opacity:1;transform:translateY(0)}
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
 
-/* TIMELINE HORIZONTALE MA JOURNÉE */
-.timeline-horizontal{
-position: relative;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 40px 20px 60px 20px;
-overflow-x:auto;
-}
-.timeline-horizontal .line{
-position: absolute;
-top:50%;
-left:0;
-width:100%;
-height:6px;
-background:var(--secondary);
-z-index:0;
-border-radius:3px;
-}
-.timeline-horizontal .step{
-position: relative;
-flex:0 0 auto;
-z-index:1;
-text-align:center;
-opacity:0;
-transform:translateY(50px);
-transition: all 0.6s ease-out;
-cursor:pointer;
-}
-.timeline-horizontal .step.show{opacity:1; transform:translateY(0);}
-.timeline-horizontal .step .icon{
-font-size:2.5rem;
-width:60px; height:60px;
-line-height:60px;
-border-radius:50%;
-background-color:var(--color);
-color:white;
-margin:auto;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-transition: transform 0.3s;
-}
-.timeline-horizontal .step:hover .icon{transform:scale(1.3);}
-.timeline-horizontal .step .tooltip{
-position:absolute;
-top:70px;
-left:50%;
-transform:translateX(-50%);
-background:var(--color);
-color:white;
-padding:6px 12px;
-border-radius:12px;
-font-size:0.9rem;
-white-space:nowrap;
-opacity:0;
-pointer-events:none;
-transition:opacity 0.3s, top 0.3s;
-}
-.timeline-horizontal .step:hover .tooltip{
-opacity:1; top:80px;
-}
-@media(max-width:768px){
-.timeline-horizontal{
-flex-direction:column;
-align-items:flex-start;
-padding:20px 10px 40px 10px;
-}
-.timeline-horizontal .line{
-width:6px;
-height:100%;
-top:0;
-left:30px;
-}
-.timeline-horizontal .step{
-margin:20px 0 0 60px;
-}
-.timeline-horizontal .step .tooltip{top:0; left:-10px; transform:translateX(-100%);}
-}
-</style>
+    header p {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 15px;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ========== ACTIONS (Language, Theme, CV) ========== */
+    .actions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .actions button,
+    .actions a {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .actions button:hover,
+    .actions a:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .actions {
+        top: 10px;
+        right: 10px;
+        gap: 5px;
+      }
+      .actions button,
+      .actions a {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ========== SECTIONS & CARDS ========== */
+    section {
+      max-width: 1150px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+      margin-bottom: 70px;
+    }
+
+    .card h2 {
+      color: var(--secondary);
+      margin-bottom: 25px;
+      border-left: 6px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        margin: 40px auto;
+        padding: 0 15px;
+      }
+      .card {
+        padding: 20px;
+        margin-bottom: 40px;
+      }
+      .card h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      background: url("UNILU.jpg") center/cover no-repeat;
+      height: 350px;
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      background: rgba(15, 23, 42, 0.75);
+      height: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-overlay h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 250px;
+      }
+      .hero-overlay h2 {
+        font-size: 1.4rem;
+      }
+      .hero-overlay p {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ========== BIOGRAPHIE ========== */
+    .bio p {
+      margin-bottom: 22px;
+      text-align: justify;
+    }
+
+    /* ========== TIMELINE VERTICALE ========== */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--secondary);
+    }
+
+    .event {
+      margin-bottom: 35px;
+      padding-left: 25px;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+
+    .event.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .event h3 {
+      color: var(--secondary);
+      margin-bottom: 5px;
+    }
+
+    .event:hover {
+      color: var(--accent);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    /* ========== GALERIE ========== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 28px;
+    }
+
+    .gallery figure {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery figure:hover {
+      transform: scale(1.05);
+      box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery figcaption {
+      text-align: center;
+      padding: 14px;
+      font-weight: 600;
+      background: var(--light-bg);
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+      .gallery img {
+        height: 200px;
+      }
+      .gallery figcaption {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ========== LIGHTBOX ========== */
+    #lightbox {
+      position: fixed;
+      z-index: 10000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #lightbox.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      transform: scale(0.7);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #lightbox.active img {
+      transform: scale(1);
+    }
+
+    /* ========== FORMULAIRE ========== */
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 14px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      font-size: 1rem;
+      background: var(--white);
+      color: var(--text);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      font-family: inherit;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    button.submit {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button.submit:hover {
+      background: #1e40af;
+      transform: translateY(-2px);
+    }
+
+    button.submit:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        padding: 12px;
+        font-size: 1rem;
+      }
+      button.submit {
+        padding: 12px;
+      }
+    }
+
+    /* ========== TABLEAU CONTACTS ========== */
+    .search-box {
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid var(--secondary);
+      outline: none;
+      background: var(--white);
+      color: var(--text);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .search-box:focus {
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
+      background: var(--white);
+    }
+
+    table th,
+    table td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    table th {
+      background-color: var(--secondary);
+      color: white;
+      font-weight: 600;
+    }
+
+    table tr:nth-child(even) {
+      background-color: rgba(37, 99, 235, 0.05);
+    }
+
+    table tr:hover {
+      background-color: rgba(37, 99, 235, 0.1);
+      transition: background-color 0.2s;
+    }
+
+    body.dark table td {
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .search-box {
+        max-width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+      table th,
+      table td {
+        padding: 8px;
+        font-size: 0.75rem;
+      }
+      table {
+        min-width: 100%;
+      }
+    }
+
+    /* ========== TIMELINE HORIZONTALE (MA JOURNÉE) ========== */
+    .timeline-horizontal {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 20px 60px 20px;
+      overflow-x: auto;
+    }
+
+    .timeline-horizontal .line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--secondary);
+      z-index: 0;
+      border-radius: 3px;
+    }
+
+    .timeline-horizontal .step {
+      position: relative;
+      flex: 0 0 auto;
+      z-index: 1;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-out;
+      cursor: pointer;
+    }
+
+    .timeline-horizontal .step.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-horizontal .step .icon {
+      font-size: 2.5rem;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+      background-color: var(--secondary);
+      color: white;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .timeline-horizontal .step:hover .icon {
+      transform: scale(1.3);
+      background-color: var(--accent);
+      color: var(--primary);
+    }
+
+    .timeline-horizontal .step .tooltip {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--secondary);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, top 0.3s;
+    }
+
+    .timeline-horizontal .step:hover .tooltip {
+      opacity: 1;
+      top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 10px 40px 10px;
+      }
+      .timeline-horizontal .line {
+        width: 6px;
+        height: 100%;
+        top: 0;
+        left: 30px;
+      }
+      .timeline-horizontal .step {
+        margin: 20px 0 0 60px;
+      }
+      .timeline-horizontal .step .tooltip {
+        top: 0;
+        left: -10px;
+        transform: translateX(-100%);
+      }
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
+    <ul id="navMenu">
+      <li><a href="#header" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
+      <li><a href="#profil" class="nav-link" data-fr="Profil" data-en="Profile">Profil</a></li>
+      <li><a href="#academique" class="nav-link" data-fr="Parcours" data-en="Timeline">Parcours</a></li>
+      <li><a href="#gallery" class="nav-link" data-fr="Galerie" data-en="Gallery">Galerie</a></li>
+      <li><a href="#journee" class="nav-link" data-fr="Ma Journée" data-en="My Day">Ma Journée</a></li>
+      <li><a href="#projets" class="nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
+      <li><a href="#competences" class="nav-link" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+      <li><a href="#connaissances" class="nav-link" data-fr="Connaissances" data-en="Contacts">Connaissances</a></li>
+      <li><a href="#contact" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- MENU FIXE -->
-<nav id="navbar">
-<button class="hamburger" id="hamburgerBtn">☰</button>
-<ul id="navMenu">
-<li><a href="#header" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-<li><a href="#profil" class="nav-link" data-fr="Profil" data-en="Profile">Profil</a></li>
-<li><a href="#academique" class="nav-link" data-fr="Parcours" data-en="Timeline">Parcours</a></li>
-<li><a href="#gallery" class="nav-link" data-fr="Galerie" data-en="Gallery">Galerie</a></li>
-<li><a href="#journee" class="nav-link" data-fr="Ma Journée" data-en="My Day">Ma Journée</a></li>
-<li><a href="#projets" class="nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
-<li><a href="#competences" class="nav-link" data-fr="Compétences" data-en="Skills">Compétences</a></li>
-<li><a href="#connaissances" class="nav-link" data-fr="Connaissances" data-en="Contacts">Connaissances</a></li>
-<li><a href="#contact" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
-</ul>
-</nav>
-
-<!-- HEADER -->
-<header id="header">
-<div class="actions">
-<button id="langBtn">🇬🇧 EN</button>
-<button id="themeBtn">🌙</button>
-<a href="CV_UVOYA_AMANDURE_Richard.pdf" download>📄 CV</a>
-</div>
-<h1 data-fr="UVOYA AMANDURE Richard" data-en="UVOYA AMANDURE Richard"></h1>
-<p data-fr="Étudiant en année préparatoire B — École Supérieure des Ingénieurs (ESI)" data-en="Preparatory Year Engineering Student"></p>
-<p data-fr="Université de Lubumbashi (UNILU)" data-en="University of Lubumbashi (UNILU)"></p>
-</header>
-
-<!-- HERO -->
-<section class="hero hidden" id="profil">
-<div class="hero-overlay">
-<h2 data-fr="Profil académique" data-en="Academic Profile"></h2>
-<p data-fr="Année préparatoire à l’ESI, UNILU. Passionné par l’ingénierie et la technologie." data-en="Preparatory year at ESI, UNILU."></p>
-</div>
-</section>
-
-<!-- BIO -->
-<section class="card bio hidden">
-<h2 data-fr="Biographie" data-en="Biography"></h2>
-<p data-fr="Je me nomme UVOYA AMANDURE Richard, né à Mahagi le 28 mars 2006. Issu d'une famille de 11 enfants, j’ai suivi mes études à la maternelle Canossa de Sainte Madeleine puis le primaire et secondaire, avant d’intégrer l’Université de Lubumbashi, École Supérieure des Ingénieurs (ESI)."
-data-en="I am UVOYA AMANDURE Richard, born in Mahagi on March 28, 2006. From a family of 11 children, I studied at Canossa de Sainte Madeleine kindergarten, then primary and secondary school before joining the University of Lubumbashi, Higher School of Engineers (ESI)."></p>
-<p data-fr="Mon ambition est de devenir ingénieur compétent, capable de contribuer au développement scientifique et technologique de la RDC."
-data-en="My ambition is to become a skilled engineer, able to contribute to the scientific and technological development of the DRC."></p>
-</section>
-
-<!-- PARCOURS -->
-<section class="card hidden" id="academique">
-<h2 data-fr="Parcours académique" data-en="Academic Timeline"></h2>
-<div class="timeline">
-<div class="event"><h3>2011</h3><p>Maternelle</p></div>
-<div class="event"><h3>2018</h3><p>Fin primaire</p></div>
-<div class="event"><h3>2025</h3><p>Entrée à l’UNILU</p></div>
-</div>
-</section>
-
-<section class="card hidden" id="gallery">
-    <h2 data-fr="Parcours en images" data-en="Gallery"></h2>
-
-    <div class="gallery">
-        <figure>
-            <img src="0-5.jpg" class="gallery-img" alt="Enfance">
-            <figcaption>Enfance</figcaption>
-        </figure>
-
-        <figure>
-            <img src="2.jpg" class="gallery-img" alt="Pré-adolescence">
-            <figcaption>Pré-adolescence</figcaption>
-        </figure>
-
-        <figure>
-            <img src="3.jpeg" class="gallery-img" alt="Adolescence">
-            <figcaption>Adolescence</figcaption>
-        </figure>
-
-        <figure>
-            <img src="4.jpeg" class="gallery-img" alt="Jeunesse">
-            <figcaption>Jeunesse</figcaption>
-        </figure>
-
-        <figure>
-            <img src="555.jpeg" class="gallery-img" alt="Aujourd’hui">
-            <figcaption>Aujourd’hui</figcaption>
-        </figure>
+  <!-- ========== HEADER ========== -->
+  <header id="header">
+    <div class="actions">
+      <button id="langBtn" title="Changer la langue / Change language">🇬🇧 EN</button>
+      <button id="themeBtn" title="Mode sombre / Dark mode">🌙</button>
+      <a href="CV_UVOYA_AMANDURE_Richard.pdf" download title="Télécharger CV / Download CV">📄 CV</a>
     </div>
-</section>
+    <h1 data-fr="UVOYA AMANDURE Richard" data-en="UVOYA AMANDURE Richard">UVOYA AMANDURE Richard</h1>
+    <p data-fr="Étudiant en année préparatoire B — École Supérieure des Ingénieurs (ESI)" data-en="Preparatory Year Engineering Student">Étudiant en année préparatoire B — École Supérieure des Ingénieurs (ESI)</p>
+    <p data-fr="Université de Lubumbashi (UNILU)" data-en="University of Lubumbashi (UNILU)">Université de Lubumbashi (UNILU)</p>
+  </header>
 
-<!-- Ma journee -->
-<section id="journee" class="card hidden">
-  <h2 data-fr="Ma Journée" data-en="Ma Journée"></h2>
-<div class="timeline-horizontal">
-<div class="line"></div>
-<div class="step"><div class="icon">☀️</div><p>06h – Réveil</p></div>
-<div class="step"><div class="icon">🍽️</div><p>7h - Déjeuner</p></div>
-<div class="step"><div class="icon">📚</div><p>08h - Cours</p></div>
-<div class="step"><div class="icon">🍽️</div><p>12h - Diné</p></div>
-<div class="step"><div class="icon">📚</div><p>14h - Cours</p></div>
-<div class="step"><div class="icon">🏋️</div><p>18h - Sport</p></div>
-<div class="step"><div class="icon">🛠️</div><p>20h - Révision</p></div>
-<div class="step"><div class="icon">🍽️</div><p>20h30' - Souper</p></div>
-<div class="step"><div class="icon">🌙</div><p>21h - Repos</p></div>
-</div>
-</section>
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero hidden" id="profil">
+    <div class="hero-overlay">
+      <h2 data-fr="Profil académique" data-en="Academic Profile">Profil académique</h2>
+      <p data-fr="Année préparatoire à l'ESI, UNILU. Passionné par l'ingénierie et la technologie." data-en="Preparatory year at ESI, UNILU.">Année préparatoire à l'ESI, UNILU. Passionné par l'ingénierie et la technologie.</p>
+    </div>
+  </section>
 
-<!-- PROJETS -->
-<section class="card hidden" id="projets">
-<h2 data-fr="Projets" data-en="Projects"></h2>
-<ul>
-<li>Site académique personnel – HTML / CSS / JS</li>
-<li>Exercices Python pour apprentissage</li>
-<li>Participation à projets scolaires</li>
-</ul>
-</section>
+  <!-- ========== BIOGRAPHIE ========== -->
+  <section class="card bio hidden">
+    <h2 data-fr="Biographie" data-en="Biography">Biographie</h2>
+    <p data-fr="Je me nomme UVOYA AMANDURE Richard, né à Mahagi le 28 mars 2006. Issu d'une famille de 11 enfants, j'ai suivi mes études à la maternelle Canossa de Sainte Madeleine puis le primaire et secondaire, avant d'intégrer l'Université de Lubumbashi, École Supérieure des Ingénieurs (ESI)." data-en="I am UVOYA AMANDURE Richard, born in Mahagi on March 28, 2006. From a family of 11 children, I studied at Canossa de Sainte Madeleine kindergarten, then primary and secondary school before joining the University of Lubumbashi, Higher School of Engineers (ESI)." />
+    <p data-fr="Mon ambition est de devenir ingénieur compétent, capable de contribuer au développement scientifique et technologique de la RDC." data-en="My ambition is to become a skilled engineer, able to contribute to the scientific and technological development of the DRC." />
+  </section>
 
-<!-- COMPÉTENCES -->
-<section class="card hidden" id="competences">
-<h2 data-fr="Compétences" data-en="Skills"></h2>
-<ul>
-<li>HTML / CSS / JavaScript</li>
-<li>Python (débutant)</li>
-<li>Mathématiques appliquées</li>
-<li>Physique générale</li>
-</ul>
-</section>
+  <!-- ========== PARCOURS ACADÉMIQUE ========== -->
+  <section class="card hidden" id="academique">
+    <h2 data-fr="Parcours académique" data-en="Academic Timeline">Parcours académique</h2>
+    <div class="timeline">
+      <div class="event">
+        <h3>2011</h3>
+        <p data-fr="Maternelle" data-en="Kindergarten">Maternelle</p>
+      </div>
+      <div class="event">
+        <h3>2018</h3>
+        <p data-fr="Fin primaire" data-en="End of Primary School">Fin primaire</p>
+      </div>
+      <div class="event">
+        <h3>2025</h3>
+        <p data-fr="Entrée à l'UNILU" data-en="Entry at UNILU">Entrée à l'UNILU</p>
+      </div>
+    </div>
+  </section>
 
-<!-- CONTACT NETWORK -->
-<section class="card hidden" id="connaissances">
-<h2 data-fr="Liste de Connaissances" data-en="Contact Network"></h2>
-<input type="text" id="searchInput" class="search-box" placeholder="Rechercher un nom ou une adresse..." onkeyup="filterTable()">
-<div class="table-container">
-<table id="knowledgeTable">
-<thead>
-<tr>
-<th>N°</th>
-<th>NOM & POST NOM & PRENOM</th>
-<th>ADRESSE</th>
-<th>NUMÉRO TÉLÉPHONE</th>
-<th>ADRESSE E-MAIL</th>
-<th>NOM DU PERE</th>
-</tr>
-</thead>
-<tbody>
-  <!-- 16 lignes -->
-<tr><td>1</td><td>UVOYA AMANDURE RICHARD</td><td>LUBUMBASHI</td><td>0828985390</td><td>richard12ricardo21@gmail.com</td><td>Uvoya</td></tr>
-<tr><td>2</td><td>CHERIBE ENZAMA Benoit</td><td>LUBUMBASHI</td><td>+243 814 796 115</td><td>benoîtenzama290@g.mail.com</td><td>ENZAMA</td></tr>
-<tr><td>3</td><td>MERVEILLE ENVIKIA Béatrice</td><td>LUBUMBASHI</td><td>+243 817 062 721</td><td>merveillebeatriceM29@gmail.com</td><td>ADRIKO</td></tr>
-<tr><td>4</td><td>TATI SERGE Samuel</td><td>LUBUMBASHI</td><td>+243 826 677 982</td><td>samuelserge172@gmail.com</td><td>IDRUNGI</td></tr>
-<tr><td>5</td><td>KAZADI THSIBASU Schilo</td><td>LUBUMBASHI</td><td>+243 820 598 932</td><td>kazadischilokts2@gmail.com</td><td>KAZADI JOSUE</td></tr>
-<tr><td>6</td><td>MBONDE MOGEMA JUNIOR</td><td>LUBUMBASHI</td><td>+243 830 036 108</td><td>sofonielebon292@gmail.com</td><td>MOGEMA</td></tr>
-<tr><td>7</td><td>MAMBI MUNGAMBA Exaucé</td><td>LUBUMBASHI</td><td>+243 823 977 843</td><td>exaucemambi600@gmail.com</td><td>MAMBI</td></tr>
-<tr><td>8</td><td>ATAYI LEMERY Laurène</td><td>LUBUMBASHI</td><td>+256 768 719286</td><td>laurenelemeryLp5@gmail.com</td><td>LEMERY</td></tr>
-<tr><td>9</td><td>IMERGO ANGUZU Augustin</td><td>LUBUMBASHI</td><td>+243 810 124 720</td><td>imergoanguzu572@gmail.com</td><td>ANGUZU</td></tr>
-<tr><td>10</td><td>DRILEBA HERITIER Deo</td><td>LUBUMBASHI</td><td>+243 814 429 699</td><td>drilebaheritier230@gmail.com</td><td>ANTOINE</td></tr>
-<tr><td>11</td><td>KAMPINGA KAZADI Eunice</td><td>LUBUMBASHI</td><td>+243 826 824 970</td><td>eunisekapingaE20@gmail.com</td><td>KAZADI</td></tr>
-<tr><td>12</td><td>EDENI DOUNE Merveille</td><td>LUBUMBASHI</td><td>+243 838 817 943</td><td>Edenimerveille366@gmail.com</td><td>DUANE</td></tr>
-<tr><td>13</td><td>PALUKU AARUNI AARON</td><td>LUBUMBASHI</td><td>+243 813 183 073</td><td>palukuaaron142@gmail.com</td><td>PALUKU</td></tr>
-<tr><td>14</td><td>BHAAKO MAKILA Jérémy</td><td>LUBUMBASHI</td><td>+243 822 738 723</td><td>jeremydegucci299@gmail.com</td><td>MAKILA</td></tr>
-<tr><td>15</td><td>AKURWOTH ENGIZE Benjamin</td><td>LUBUMBASHI</td><td>+243 833 232 967</td><td>Benjaminengize730@gmail.com</td><td>ENGIZE</td></tr>
-<tr><td>16</td><td>ADRIKO ANGUEZU Richard</td><td>LUBUMBASHI</td><td>+243 826 560 463</td><td>Richardanguezu045@gmail.com</td><td>GILBERT</td></tr>
-<!-- Remplir avec tes contacts -->
-</tbody>
-</table>
-</div>
-</section>
+  <!-- ========== GALERIE ========== -->
+  <section class="card hidden" id="gallery">
+    <h2 data-fr="Parcours en images" data-en="Gallery">Parcours en images</h2>
+    <div class="gallery">
+      <figure>
+        <img src="0-5.jpg" class="gallery-img" alt="Enfance">
+        <figcaption data-fr="Enfance" data-en="Childhood">Enfance</figcaption>
+      </figure>
+      <figure>
+        <img src="2.jpg" class="gallery-img" alt="Pré-adolescence">
+        <figcaption data-fr="Pré-adolescence" data-en="Pre-adolescence">Pré-adolescence</figcaption>
+      </figure>
+      <figure>
+        <img src="3.jpeg" class="gallery-img" alt="Adolescence">
+        <figcaption data-fr="Adolescence" data-en="Adolescence">Adolescence</figcaption>
+      </figure>
+      <figure>
+        <img src="4.jpeg" class="gallery-img" alt="Jeunesse">
+        <figcaption data-fr="Jeunesse" data-en="Youth">Jeunesse</figcaption>
+      </figure>
+      <figure>
+        <img src="555.jpeg" class="gallery-img" alt="Aujourd'hui">
+        <figcaption data-fr="Aujourd'hui" data-en="Today">Aujourd'hui</figcaption>
+      </figure>
+    </div>
+  </section>
 
-<!-- FORMULAIRE CONTACT -->
-<section class="card hidden" id="contact">
-<h2 data-fr="Contact" data-en="Contact"></h2>
-<form id="contactForm">
-<input placeholder="Nom / Name" required>
-<input type="email" placeholder="Email" required>
-<textarea placeholder="Message"></textarea>
-<button class="submit">Envoyer / Send</button>
-<p id="msg"></p>
-</form>
-</section>
+  <!-- ========== MA JOURNÉE ========== -->
+  <section id="journee" class="card hidden">
+    <h2 data-fr="Ma Journée" data-en="My Day">Ma Journée</h2>
+    <div class="timeline-horizontal">
+      <div class="line"></div>
+      <div class="step">
+        <div class="icon">☀️</div>
+        <p data-fr="06h – Réveil" data-en="6 AM - Wake up">06h – Réveil</p>
+      </div>
+      <div class="step">
+        <div class="icon">🍽️</div>
+        <p data-fr="7h - Déjeuner" data-en="7 AM - Breakfast">7h - Déjeuner</p>
+      </div>
+      <div class="step">
+        <div class="icon">📚</div>
+        <p data-fr="08h - Cours" data-en="8 AM - Classes">08h - Cours</p>
+      </div>
+      <div class="step">
+        <div class="icon">🍽️</div>
+        <p data-fr="12h - Déjeuner" data-en="12 PM - Lunch">12h - Déjeuner</p>
+      </div>
+      <div class="step">
+        <div class="icon">📚</div>
+        <p data-fr="14h - Cours" data-en="2 PM - Classes">14h - Cours</p>
+      </div>
+      <div class="step">
+        <div class="icon">🏋️</div>
+        <p data-fr="18h - Sport" data-en="6 PM - Sport">18h - Sport</p>
+      </div>
+      <div class="step">
+        <div class="icon">🛠️</div>
+        <p data-fr="20h - Révision" data-en="8 PM - Study">20h - Révision</p>
+      </div>
+      <div class="step">
+        <div class="icon">🍽️</div>
+        <p data-fr="20h30 - Souper" data-en="8:30 PM - Dinner">20h30 - Souper</p>
+      </div>
+      <div class="step">
+        <div class="icon">🌙</div>
+        <p data-fr="21h - Repos" data-en="9 PM - Rest">21h - Repos</p>
+      </div>
+    </div>
+  </section>
 
-<footer>©️ 2026 — UVOYA AMANDURE Richard | UNILU – ESI</footer>
-<div id="lightbox"><img src="" alt="Vue agrandie"></div>
+  <!-- ========== PROJETS ========== -->
+  <section class="card hidden" id="projets">
+    <h2 data-fr="Projets" data-en="Projects">Projets</h2>
+    <ul>
+      <li>Site académique personnel – HTML / CSS / JS</li>
+      <li>Exercices Python pour apprentissage</li>
+      <li>Participation à projets scolaires</li>
+    </ul>
+  </section>
 
-<script>
-/* LIGHTBOX */
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=lightbox.querySelector('img');
-document.querySelectorAll('.gallery-img').forEach(img=>{
-img.addEventListener('click',()=>{
-lightbox.classList.add('active');
-lightbox.style.display='flex';
-lightboxImg.src=img.src;
-document.body.style.overflow='hidden';
-});
-});
-lightbox.addEventListener('click',()=>{
-lightbox.classList.remove('active');
-setTimeout(()=>{lightbox.style.display='none';document.body.style.overflow='auto';},400);
-});
+  <!-- ========== COMPÉTENCES ========== -->
+  <section class="card hidden" id="competences">
+    <h2 data-fr="Compétences" data-en="Skills">Compétences</h2>
+    <ul>
+      <li>HTML / CSS / JavaScript</li>
+      <li>Python (débutant)</li>
+      <li>Mathématiques appliquées</li>
+      <li>Physique générale</li>
+    </ul>
+  </section>
 
-/* FILTRE TABLEAU */
-function filterTable(){
-let input=document.getElementById("searchInput").value.toLowerCase();
-let tr=document.getElementById("knowledgeTable").getElementsByTagName("tr");
-for(let i=1;i<tr.length;i++){
-tr[i].style.display=tr[i].textContent.toLowerCase().includes(input)?"":"none";
-}
-}
+  <!-- ========== CONNAISSANCES / CONTACTS ========== -->
+  <section class="card hidden" id="connaissances">
+    <h2 data-fr="Liste de Connaissances" data-en="Contact Network">Liste de Connaissances</h2>
+    <input type="text" id="searchInput" class="search-box" placeholder="Rechercher un nom ou une adresse..." onkeyup="filterTable()">
+    <div class="table-container">
+      <table id="knowledgeTable">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>NOM & POST NOM & PRENOM</th>
+            <th>ADRESSE</th>
+            <th>NUMÉRO TÉLÉPHONE</th>
+            <th>ADRESSE E-MAIL</th>
+            <th>NOM DU PERE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>UVOYA AMANDURE RICHARD</td><td>LUBUMBASHI</td><td>0828985390</td><td>richard12ricardo21@gmail.com</td><td>Uvoya</td></tr>
+          <tr><td>2</td><td>CHERIBE ENZAMA Benoit</td><td>LUBUMBASHI</td><td>+243 814 796 115</td><td>benoîtenzama290@g.mail.com</td><td>ENZAMA</td></tr>
+          <tr><td>3</td><td>MERVEILLE ENVIKIA Béatrice</td><td>LUBUMBASHI</td><td>+243 817 062 721</td><td>merveillebeatriceM29@gmail.com</td><td>ADRIKO</td></tr>
+          <tr><td>4</td><td>TATI SERGE Samuel</td><td>LUBUMBASHI</td><td>+243 826 677 982</td><td>samuelserge172@gmail.com</td><td>IDRUNGI</td></tr>
+          <tr><td>5</td><td>KAZADI THSIBASU Schilo</td><td>LUBUMBASHI</td><td>+243 820 598 932</td><td>kazadischilokts2@gmail.com</td><td>KAZADI JOSUE</td></tr>
+          <tr><td>6</td><td>MBONDE MOGEMA JUNIOR</td><td>LUBUMBASHI</td><td>+243 830 036 108</td><td>sofonielebon292@gmail.com</td><td>MOGEMA</td></tr>
+          <tr><td>7</td><td>MAMBI MUNGAMBA Exaucé</td><td>LUBUMBASHI</td><td>+243 823 977 843</td><td>exaucemambi600@gmail.com</td><td>MAMBI</td></tr>
+          <tr><td>8</td><td>ATAYI LEMERY Laurène</td><td>LUBUMBASHI</td><td>+256 768 719286</td><td>laurenelemeryLp5@gmail.com</td><td>LEMERY</td></tr>
+          <tr><td>9</td><td>IMERGO ANGUZU Augustin</td><td>LUBUMBASHI</td><td>+243 810 124 720</td><td>imergoanguzu572@gmail.com</td><td>ANGUZU</td></tr>
+          <tr><td>10</td><td>DRILEBA HERITIER Deo</td><td>LUBUMBASHI</td><td>+243 814 429 699</td><td>drilebaheritier230@gmail.com</td><td>ANTOINE</td></tr>
+          <tr><td>11</td><td>KAMPINGA KAZADI Eunice</td><td>LUBUMBASHI</td><td>+243 826 824 970</td><td>eunisekapingaE20@gmail.com</td><td>KAZADI</td></tr>
+          <tr><td>12</td><td>EDENI DOUNE Merveille</td><td>LUBUMBASHI</td><td>+243 838 817 943</td><td>Edenimerveille366@gmail.com</td><td>DUANE</td></tr>
+          <tr><td>13</td><td>PALUKU AARUNI AARON</td><td>LUBUMBASHI</td><td>+243 813 183 073</td><td>palukuaaron142@gmail.com</td><td>PALUKU</td></tr>
+          <tr><td>14</td><td>BHAAKO MAKILA Jérémy</td><td>LUBUMBASHI</td><td>+243 822 738 723</td><td>jeremydegucci299@gmail.com</td><td>MAKILA</td></tr>
+          <tr><td>15</td><td>AKURWOTH ENGIZE Benjamin</td><td>LUBUMBASHI</td><td>+243 833 232 967</td><td>Benjaminengize730@gmail.com</td><td>ENGIZE</td></tr>
+          <tr><td>16</td><td>ADRIKO ANGUEZU Richard</td><td>LUBUMBASHI</td><td>+243 826 560 463</td><td>Richardanguezu045@gmail.com</td><td>GILBERT</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-/* LANGUE ET THEME */
-const langBtn=document.getElementById("langBtn");
-const themeBtn=document.getElementById("themeBtn");
-let currentLang="fr";
-function updateLanguage(){
-document.querySelectorAll("[data-fr]").forEach(el=>el.textContent=currentLang=="fr"?el.dataset.fr:el.dataset.en);
-langBtn.textContent=currentLang=="fr"?"🇬🇧 EN":"🇫🇷 FR";
-}
-langBtn.addEventListener("click",()=>{currentLang=currentLang=="fr"?"en":"fr";updateLanguage();});
-themeBtn.addEventListener("click",()=>{document.body.classList.toggle("dark");themeBtn.textContent=document.body.classList.contains("dark")?"☀️":"🌙";});
+  <!-- ========== FORMULAIRE CONTACT ========== -->
+  <section class="card hidden" id="contact">
+    <h2 data-fr="Contact" data-en="Contact">Contact</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Nom / Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit" class="submit" data-fr="Envoyer" data-en="Send">Envoyer</button>
+      <p id="msg"></p>
+    </form>
+  </section>
 
-/* ANIMATIONS AU DEFILEMENT */
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show");});},{threshold:0.1});
-document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
-const timelineObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add("show");});},{threshold:0.3});
-document.querySelectorAll(".event").forEach(e=>timelineObserver.observe(e));
-document.querySelectorAll('.timeline-horizontal .step').forEach((step,i)=>{setTimeout(()=>{step.classList.add('show');},i*200);});
+  <!-- ========== FOOTER ========== -->
+  <footer>© 2026 — UVOYA AMANDURE Richard | UNILU – ESI</footer>
 
-/* FORMULAIRE */
-const form=document.getElementById("contactForm");
-const msg=document.getElementById("msg");
-form.addEventListener("submit",e=>{
-e.preventDefault();
-msg.textContent=currentLang=="fr"?"Message envoyé !":"Message sent!";
-msg.style.color="green";
-form.reset();
-});
+  <!-- ========== LIGHTBOX ========== -->
+  <div id="lightbox">
+    <img src="" alt="Vue agrandie / Enlarged view">
+  </div>
 
-/* MENU ACTIF AU SCROLL */
-const sections=document.querySelectorAll("header, .hero, .card");
-const navLinks=document.querySelectorAll(".nav-link");
-window.addEventListener("scroll",()=>{
-let current="";
-sections.forEach(section=>{
-const sectionTop=section.offsetTop-80;
-if(scrollY>=sectionTop)current=section.id;
-});
-navLinks.forEach(link=>{link.classList.remove("active"); if(link.getAttribute("href").includes(current))link.classList.add("active");});
-});
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // ========== VARIABLES GLOBALES ==========
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+    const langBtn = document.getElementById("langBtn");
+    const themeBtn = document.getElementById("themeBtn");
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const contactForm = document.getElementById("contactForm");
+    const msgElement = document.getElementById("msg");
+    
+    let currentLang = "fr";
 
-/* MENU HAMBURGER */
-document.addEventListener("DOMContentLoaded",function(){
-const hamburgerBtn=document.getElementById("hamburgerBtn");
-const navMenu=document.getElementById("navMenu");
+    // ========== LIGHTBOX ==========
+    document.querySelectorAll('.gallery-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        document.body.style.overflow = 'hidden';
+      });
+    });
 
-if(hamburgerBtn && navMenu){
-hamburgerBtn.addEventListener("click",function(e){
-e.stopPropagation();
-navMenu.classList.toggle("active");
-hamburgerBtn.classList.toggle("active");
-hamburgerBtn.textContent = hamburgerBtn.classList.contains("active") ? "✕" : "☰";
-});
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      setTimeout(() => {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 400);
+    });
 
-navMenu.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",function(){
-navMenu.classList.remove("active");
-hamburgerBtn.classList.remove("active");
-hamburgerBtn.textContent = "☰";
-});
-});
+    // ========== TABLE FILTER ==========
+    function filterTable() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let tr = document.getElementById("knowledgeTable").getElementsByTagName("tr");
+      for (let i = 1; i < tr.length; i++) {
+        tr[i].style.display = tr[i].textContent.toLowerCase().includes(input) ? "" : "none";
+      }
+    }
 
-document.addEventListener("click",function(e){
-if(!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)){
-navMenu.classList.remove("active");
-hamburgerBtn.classList.remove("active");
-hamburgerBtn.textContent = "☰";
-}
-});
-}
-});
+    // ========== LANGUAGE TOGGLE ==========
+    function updateLanguage() {
+      document.querySelectorAll("[data-fr]").forEach(el => {
+        el.textContent = currentLang === "fr" ? el.dataset.fr : el.dataset.en;
+      });
+      langBtn.textContent = currentLang === "fr" ? "🇬🇧 EN" : "🇫🇷 FR";
+    }
 
-updateLanguage();
-</script>
+    langBtn.addEventListener("click", () => {
+      currentLang = currentLang === "fr" ? "en" : "fr";
+      updateLanguage();
+    });
 
+    // ========== THEME TOGGLE ==========
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+
+    // ========== SCROLL ANIMATIONS ==========
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+
+    const timelineObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll(".event").forEach(e => timelineObserver.observe(e));
+
+    // Timeline horizontal animation
+    document.querySelectorAll('.timeline-horizontal .step').forEach((step, i) => {
+      setTimeout(() => {
+        step.classList.add('show');
+      }, i * 200);
+    });
+
+    // ========== CONTACT FORM ==========
+    contactForm.addEventListener("submit", e => {
+      e.preventDefault();
+      msgElement.textContent = currentLang === "fr" ? "Message envoyé ! ✓" : "Message sent! ✓";
+      msgElement.style.color = "green";
+      msgElement.style.fontSize = "1.1rem";
+      contactForm.reset();
+      setTimeout(() => {
+        msgElement.textContent = "";
+      }, 4000);
+    });
+
+    // ========== ACTIVE NAV ON SCROLL ==========
+    const sections = document.querySelectorAll("header, .hero, .card");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (scrollY >= sectionTop) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // ========== HAMBURGER MENU ==========
+    if (hamburgerBtn && navMenu) {
+      hamburgerBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        navMenu.classList.toggle("active");
+        hamburgerBtn.classList.toggle("active");
+        hamburgerBtn.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
+      });
+
+      // Close menu when link clicked
+      navMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function() {
+          navMenu.classList.remove("active");
+          hamburgerBtn.classList.remove("active");
+          hamburgerBtn.textContent = "☰";
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", function(e) {
+        const isClickInsideNav = navMenu.contains(e.target) || hamburgerBtn.contains(e.target);
+        if (!isClickInsideNav && navMenu.classList.contains("active")) {
+          navMenu.classList.remove("active");
+          hamburgerBtn.classList.remove("active");
+          hamburgerBtn.textContent = "☰";
+        }
+      });
+    }
+
+    // ========== INIT ==========
+    updateLanguage();
+  </script>
 </body>
 </html>
