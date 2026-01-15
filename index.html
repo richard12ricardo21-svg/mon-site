@@ -700,19 +700,34 @@ navLinks.forEach(link=>{link.classList.remove("active"); if(link.getAttribute("h
 });
 
 /* MENU HAMBURGER */
+document.addEventListener("DOMContentLoaded",function(){
 const hamburgerBtn=document.getElementById("hamburgerBtn");
 const navMenu=document.getElementById("navMenu");
-hamburgerBtn.addEventListener("click",()=>{
+
+if(hamburgerBtn && navMenu){
+hamburgerBtn.addEventListener("click",function(e){
+e.stopPropagation();
 navMenu.classList.toggle("active");
 hamburgerBtn.classList.toggle("active");
 hamburgerBtn.textContent = hamburgerBtn.classList.contains("active") ? "✕" : "☰";
 });
+
 navMenu.querySelectorAll("a").forEach(link=>{
-link.addEventListener("click",()=>{
+link.addEventListener("click",function(){
 navMenu.classList.remove("active");
 hamburgerBtn.classList.remove("active");
 hamburgerBtn.textContent = "☰";
 });
+});
+
+document.addEventListener("click",function(e){
+if(!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)){
+navMenu.classList.remove("active");
+hamburgerBtn.classList.remove("active");
+hamburgerBtn.textContent = "☰";
+}
+});
+}
 });
 
 updateLanguage();
