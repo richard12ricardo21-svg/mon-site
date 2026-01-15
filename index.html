@@ -103,6 +103,8 @@
       cursor: pointer;
       padding: 8px;
       transition: transform 0.3s ease;
+      z-index: 1001;
+      position: relative;
     }
 
     .hamburger:focus {
@@ -121,7 +123,7 @@
       }
 
       .hamburger {
-        display: block;
+        display: block !important;
       }
 
       #navbar ul {
@@ -1081,6 +1083,18 @@
         }
       });
     }
+
+    // ========== CONNAISSANCES / CONTACT EXCLUSION ==========
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", function() {
+        const href = this.getAttribute("href");
+        if (href === "#connaissances") {
+          document.getElementById("contact").classList.add("hidden");
+        } else if (href === "#contact") {
+          document.getElementById("connaissances").classList.add("hidden");
+        }
+      });
+    });
 
     // ========== INIT ==========
     updateLanguage();
